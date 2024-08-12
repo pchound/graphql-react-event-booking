@@ -15,6 +15,7 @@ app.use(
     schema: buildSchema(`
         type Event {
           _id: ID!
+          title: String!
           description: String!
           price: Float!
           date: String!
@@ -45,16 +46,17 @@ app.use(
         //return ['Romantic Cooking', 'Sailing', 'All-Night Coding'];
         return events;
       },
-      createEvent: (args) => {
+      createEvent: args => {
         const event = {
           _id: Math.random().toString(),
-          title: args.title,
-          description: args.description,
-          price: +args.price,
-          date: args.date
+          title: args.eventInput.title,
+          description: args.eventInput.description,
+          price: +args.eventInput.price,
+          date: args.eventInput.date
         };
         console.log(args);
         events.push(event);
+        
         return event;
       }
     },
