@@ -76,14 +76,14 @@ app.use(
           description: args.eventInput.description,
           price: +args.eventInput.price,
           date: new Date(args.eventInput.date),
-          creator: '66e0b072bec168f80223fcad'
+          creator: '66e0b2d12904209d5feafef8'
         });
         let createdEvent;
         return event
           .save()
           .then(result => {
             createEvent = { ...result._doc, _id: result._doc._id.toString()}
-            return User.findById('66e0b072bec168f80223fcad')
+            return User.findById('66e0b2d12904209d5feafef8')
         })
         .then(user => {
           if (!user) {
